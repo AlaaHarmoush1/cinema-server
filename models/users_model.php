@@ -8,7 +8,7 @@ class User {
     }
 
 
-    public function createUser($name, $email, $phone_number, $password){
+    public function create_user($name, $email, $phone_number, $password){
 
         if(empty($email) && !empty($phone_number)){
             $sql = "INSERT INTO users (name, email, phone_number, password, social_provider, social_id) VALUES ('$name', NULL, '$phone_number, '$password', NULL, NULL)";  

@@ -19,8 +19,9 @@ $sql = "CREATE TABLE IF NOT EXISTS users (
   )
 )";
 
+$execute = $conc->prepare($sql);
 
-if ($conc->query($sql) === TRUE) {
+if ($execute && $execute->execute()) {
     echo "Table 'users' created successfully.";
 } else {
     echo "Error creating table: " . $conc->error;

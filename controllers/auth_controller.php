@@ -14,10 +14,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $phone_number = $data['phone_number'] ?? null;
     $password = $data['password'];
 
+
     if(empty($name) || empty($password)) {
         echo json_encode(["Error 400" => "You need to provide the name and the password"]);
         exit;
     }
+
+    $password = password_hash($password, PASSWORD_DEFAULT);
 
     $user = new User($conc);
     $result = $user->create_user($name, $email, $phone_number, $password);

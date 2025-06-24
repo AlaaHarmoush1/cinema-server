@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = $user->create_user($name, $email, $phone_number, $password);
 
     if($result) {
-        echo json_encode(["message" => "User created successfully."]);
+        echo json_encode(["success" => "User created successfully."]);
     } else {
         echo json_encode(["Error 500" => "Failed to create user."]);
     }

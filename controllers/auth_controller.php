@@ -28,6 +28,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     if($result) {
         echo json_encode(["success 200" => "User created successfully."]);
     } else {
-        echo json_encode(["Error 500" => "Failed to create user."]);
+        echo json_encode(["Error 500" => "Failed to create user." . $conc->error]);
     }
 }

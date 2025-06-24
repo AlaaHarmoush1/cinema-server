@@ -9,7 +9,7 @@ $sql = "CREATE TABLE IF NOT EXISTS users (
   phone_number VARCHAR(20) UNIQUE,
   password VARCHAR(255),
   social_provider VARCHAR(50),
-  social_id VARCHAR(255),
+  social_id VARCHAR(255), --id to prevent the user to signup twice wiht the same account it will be saved once
   age_verified BOOLEAN DEFAULT FALSE,
   role ENUM('user', 'admin') DEFAULT 'user',
   CONSTRAINT chk_contact_method CHECK (

@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../connection/connection.php';
-require_once __DIR__ . '/../models/users_model.php';
+require_once __DIR__ . '/../models/User.php';
 
 header("Access-Control-Allow-Origin: *"); 
 header("Content-Type: application/json");

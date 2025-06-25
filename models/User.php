@@ -19,6 +19,5 @@ class User {
         }else if(empty($email) && empty($phone_number)){
             return "You need an email or phone number to sign up you cannot provide none";
         }
-
     }
 }

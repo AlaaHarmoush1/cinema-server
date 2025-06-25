@@ -19,6 +19,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     if(empty($name) || empty($password)) {
+        http_response_code(400);
         echo json_encode(["Error 400" => "You need to provide the name and the password"]);
         exit;
     }
@@ -29,8 +30,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = $user->create_user($name, $email, $phone_number, $password);
 
     if($result) {
+        http_response_code(200);
         echo json_encode(["success 200" => "User created successfully."]);
     } else {
+        http_response_code(500);
         echo json_encode(["Error 500" => "Failed to create user." . $conc->error]);
     }
 }

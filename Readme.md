@@ -26,3 +26,13 @@ CINEMA-SERVER/
 - PHP
 - MySQL
 - MySQLi for database interactions
+
+
+
+# API Endpoints
+
+| Method |                 Endpoint                   | Description                  |Requirments
+|--------|--------------------------------------------|------------------------------|-------------------------------------
+| POST   | /contollers/auth_controller.php            | Create a new user            | name, email or phone, password
+| POST   | /contollers/Login_controller.php           | Check if user exist          | email or phone, password
+

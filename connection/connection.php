@@ -8,8 +8,6 @@ $conc =new mysqli(hostname: $ServerName, username: $username, password: $passwor
 
     if($conc -> connect_error){
         die("connection failed: " . $conc -> connect_error);
-    }else {
-        echo "connection success to database";
-    };
+    }
     
 ?>

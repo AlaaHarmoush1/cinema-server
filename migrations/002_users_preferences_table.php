@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../connection/connection.php';
 
 $sql=
-"CREATE TABLE IF NOT EXISTS euser_preferences (
+"CREATE TABLE IF NOT EXISTS userPreferences (
   id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL,
   preferred_genres TEXT,

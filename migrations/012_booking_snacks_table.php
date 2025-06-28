@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/../connection/connection.php';
 
-$sql = "CREATE TABLE IF NOT EXISTS booking_snacks (
+$sql = "CREATE TABLE IF NOT EXISTS bookingSnacks (
   id INT AUTO_INCREMENT PRIMARY KEY,
   booking_id INT NOT NULL,
   snack_id INT NOT NULL,

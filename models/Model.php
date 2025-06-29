@@ -74,13 +74,5 @@ abstract class Model {
     return $stmt->execute();
 }
 
-    public function delete(mysqli $conc): bool {
-        $sql = sprintf("DELETE FROM %s WHERE %s = ?", 
-
-        static::$table, 
-        static::$primary_key);
-        $stmt = $conc->prepare($sql);
-        $stmt->bind_param("i", $this->{static::$primary_key});
-        return $stmt->execute();
-    }
+    
 }

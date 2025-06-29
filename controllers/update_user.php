@@ -26,7 +26,7 @@ try {
     $success = $user->update($conc, $updateData);
     
     if ($success) {
-        // Get fresh user data after update
+
         $updatedUser = User::find($conc, $userId);
         
         echo json_encode([
@@ -41,12 +41,11 @@ try {
             'message' => 'Database update failed'
         ]);
     }
-} catch (Exception $e) {
+} catch (Error) {
     http_response_code(500);
     echo json_encode([
         'success' => false,
-        'message' => 'Server error: ' . $e->getMessage(),
-        'error_code' => $e->getCode()
+        'message' => 'Server error'
     ]);
 }
 

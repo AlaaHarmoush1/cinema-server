@@ -14,7 +14,7 @@ CINEMA-SERVER/
 ├── Models/
 │   └── (e.g. User.php)                 # PHP classes that represent database tables and contain related business logic
 ├── migrations/
-│   └── (e.g. create_users_table.php)   # Contains scripts to create or modify database tables (schema definitions)
+│   └── (e.g. 001_users_table.php)      # Contains scripts to create or modify database tables (schema definitions)
 │
 ├── Seeds/
 │   └── (e.g. seed_users.php)           # Scripts used to populate the database with initial or sample data for testing or demo purposes
@@ -34,6 +34,8 @@ CINEMA-SERVER/
 |        |                                            |                              |                                     |
 | Method |                 Endpoint                   |          Description         |            Requirments              |
 |--------|--------------------------------------------|------------------------------|-------------------------------------|
-| POST   | /contollers/auth_controller.php            | Create a new user            | name, email or phone, password      |
-| POST   | /contollers/Login_controller.php           | Check if user exist          | email or phone, password            |
+| POST   | /controllers/auth_controller.php           | Create a new user            | name, email or phone, password      |
+| POST   | /controllers/Login_controller.php          | Check if user exist          | email or phone, password            |
+| POST   | /controllers/update_user.php               | update user info             | any of user info from user table    |
+
 

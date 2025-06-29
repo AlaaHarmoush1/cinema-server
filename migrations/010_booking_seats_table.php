@@ -8,7 +8,7 @@ $sql = "CREATE TABLE IF NOT EXISTS bookingSeats (
   seat_id INT NOT NULL,
   price DECIMAL(10, 2) NOT NULL,
   FOREIGN KEY (booking_id) REFERENCES bookings(id) ON DELETE CASCADE,
-  FOREIGN KEY (seat_id) REFERENCES auditorium_seats(id) ON DELETE CASCADE
+  FOREIGN KEY (seat_id) REFERENCES auditoriumSeats(id) ON DELETE CASCADE
 )";
 
 $execute = $conc->prepare($sql);

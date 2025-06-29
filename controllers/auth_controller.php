@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../connection/connection.php';
-require_once __DIR__ . '/../models/User.php';
+require_once __DIR__ . '/../models/Auth.php';
 
 header("Access-Control-Allow-Origin: http://127.0.0.1:5500"); 
 header("Content-Type: application/json");
@@ -26,7 +26,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $password = password_hash($password, PASSWORD_DEFAULT);
 
-    $user = new User($conc);
+    $user = new Auth($conc);
     $result = $user->create_user($name, $email, $phone_number, $password);
 
     if($result) {

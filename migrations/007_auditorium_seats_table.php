@@ -9,7 +9,7 @@ $sql = "CREATE TABLE IF NOT EXISTS auditoriumSeats (
   seat_type_id INT NOT NULL,
   row_label VARCHAR(10),
   FOREIGN KEY (auditorium_id) REFERENCES auditoriums(id) ON DELETE CASCADE,
-  FOREIGN KEY (seat_type_id) REFERENCES seat_types(id) ON DELETE CASCADE
+  FOREIGN KEY (seat_type_id) REFERENCES seattypes(id) ON DELETE CASCADE
 )";
 
 $execute = $conc->prepare($sql);

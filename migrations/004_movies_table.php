@@ -11,7 +11,8 @@ $sql = "CREATE TABLE IF NOT EXISTS movies (
   rating VARCHAR(10),
   genre VARCHAR(100),
   release_date DATE,
-  duration_minutes INT
+  duration_minutes INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )";
 
 $execute = $conc->prepare($sql);

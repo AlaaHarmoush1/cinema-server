@@ -2,7 +2,6 @@
 
 require_once __DIR__ . '/../connection/connection.php';
 
-// Define 2 users
 $users = [
     [
         "name" => "Alaa Harmoush",

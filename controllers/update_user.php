@@ -26,39 +26,39 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         'message' => 'User not found with ID: ' . $userId
     ]);
     exit;
-}
-
-try {
-
-    if (isset($updateData['password'])) {
-        $updateData['password'] = password_hash($updateData['password'], PASSWORD_DEFAULT);
     }
 
-    $success = $user->update($conc, $updateData);
-    error_log("Attempting to update user ID $userId with: " . json_encode($updateData));
+    try {
 
-    
-    if ($success) {
+        if (isset($updateData['password'])) {
+            $updateData['password'] = password_hash($updateData['password'], PASSWORD_DEFAULT);
+        }
 
-        $updatedUser = User::find($conc, $userId);
+        $success = $user->update($conc, $updateData);
+        error_log("Attempting to update user ID $userId with: " . json_encode($updateData));
+
         
-        echo json_encode([
-            'success' => true,
-            'message' => 'User updated successfully',
-            'user' => $updatedUser
-        ]);
-    } else {
+        if ($success) {
+
+            $updatedUser = User::find($conc, $userId);
+            
+            echo json_encode([
+                'success' => true,
+                'message' => 'User updated successfully',
+                'user' => $updatedUser
+            ]);
+        } else {
+            http_response_code(500);
+            echo json_encode([
+                'success' => false,
+                'message' => 'Database update failed'
+            ]);
+        }
+    } catch (Error) {
         http_response_code(500);
         echo json_encode([
             'success' => false,
-            'message' => 'Database update failed'
+            'message' => 'Server error'
         ]);
     }
-} catch (Error) {
-    http_response_code(500);
-    echo json_encode([
-        'success' => false,
-        'message' => 'Server error'
-    ]);
-}
 }

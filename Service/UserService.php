@@ -2,7 +2,7 @@
 
 class UserService {
 
-    public static function categoryToArray($user_db){
+    public static function UsersToArray($user_db){
         $results = [];
 
         foreach($user_db as $u){

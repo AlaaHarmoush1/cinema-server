@@ -34,8 +34,8 @@ CINEMA-SERVER/
 |        |                                            |                              |                                     |
 | Method |                 Endpoint                   |          Description         |            Requirments              |
 |--------|--------------------------------------------|------------------------------|-------------------------------------|
-| POST   | /controllers/auth_controller.php           | Create a new user            | name, email or phone, password      |
-| POST   | /controllers/Login_controller.php          | Check if user exist          | email or phone, password            |
+| POST   | /cinema-server/Register                    | Create a new user            | name, email or phone, password      |
+| POST   | cinema-server/Login                        | Check if user exist          | email or phone, password            |
 | POST   | /controllers/update_user.php               | update user info             | any of user info from user table    |
 
 

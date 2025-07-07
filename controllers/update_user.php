@@ -3,62 +3,47 @@
 
 require_once __DIR__.'/../connection/connection.php';
 require_once __DIR__.'/../models/User.php';
+require_once __DIR__.'/../Service/ResponseService.php';
 
-// header("Access-Control-Allow-Origin: http://127.0.0.1:5500"); 
-header("Content-Type: application/json");
-header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
+class User_update {
 
+    public function update_user(){
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $data = json_decode(file_get_contents('php://input'), true);
+        global $conc;
 
+        $data = json_decode(file_get_contents('php://input'), true);
 
-    $userId = (int)$data['id'];
-    $updateData = $data['data'];
+        $userId = (int)$data['id'];
+        $updateData = $data['updateData'];
 
-    $user = User::find($conc, $userId);
+        $user = User::find($conc, $userId);
 
-    if (!$user) {
-    http_response_code(404);
-    echo json_encode([
-        'success' => false,
-        'message' => 'User not found with ID: ' . $userId
-    ]);
-    exit;
-    }
+        try{
+            if (isset($updateData['password'])) {
+                $updateData['password'] = password_hash($updateData['password'], PASSWORD_DEFAULT);
+            }
 
-    try {
+            $success = $user->update($conc, $updateData);
 
-        if (isset($updateData['password'])) {
-            $updateData['password'] = password_hash($updateData['password'], PASSWORD_DEFAULT);
-        }
+            if ($success){
 
-        $success = $user->update($conc, $updateData);
-        error_log("Attempting to update user ID $userId with: " . json_encode($updateData));
+                $updatedUser = User::find($conc, $userId);
 
-        
-        if ($success) {
-
-            $updatedUser = User::find($conc, $userId);
-            
-            echo json_encode([
-                'success' => true,
+                echo ResponseService::success_response([
                 'message' => 'User updated successfully',
                 'user' => $updatedUser
-            ]);
-        } else {
-            http_response_code(500);
-            echo json_encode([
-                'success' => false,
+                ]);
+            } else {
+                echo ResponseService::error_response([
                 'message' => 'Database update failed'
-            ]);
+                ]);
+            }
+        }catch (error){
+            echo ResponseService::error_response([
+                'message' => 'error connection to database'
+                ]);
         }
-    } catch (Error) {
-        http_response_code(500);
-        echo json_encode([
-            'success' => false,
-            'message' => 'Server error'
-        ]);
+
     }
+
 }

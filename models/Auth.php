@@ -6,7 +6,7 @@ require_once __DIR__ . '/Model.php';
 
 class Auth extends Model {
     private $conc;
-     protected static string $table = 'users';
+    protected static string $table = 'users';
 
     public function __construct($connection) {
         $this->conc = $connection;

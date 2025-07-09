@@ -18,7 +18,6 @@ abstract class Model {
         return $data ? new static($data) : null;
     }
 
-
     public static function all(mysqli $conc) {
         $sql = sprintf("SELECT * FROM %s", static::$table);
         
@@ -60,7 +59,6 @@ abstract class Model {
         return null;
     }
 
-
     public function update(mysqli $conc, array $data): bool {
         $setClause = implode(" = ?, ", array_keys($data)) . " = ?";
         $types = str_repeat("s", count($data) + 1); 
@@ -79,5 +77,4 @@ abstract class Model {
         return $stmt->execute();
     }
 
-    
 }
